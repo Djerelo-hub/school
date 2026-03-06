@@ -258,6 +258,17 @@ footer {
     }
 }
 /* Nav */
+.navbar-nav {
+    align-items: center;
+}
+
+@media (min-width: 1200px) {
+    .navbar-nav .nav-link {
+        padding-left: 0.7rem !important;
+        padding-right: 0.7rem !important;
+        white-space: nowrap;
+    }
+}
 .brand-text {
     font-size: 1.3rem;
     font-weight: 600;
