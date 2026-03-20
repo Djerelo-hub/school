@@ -30,6 +30,7 @@ body {
 
 .hero-section {
     padding: 100px 0;
+    margin-top: 20px;
     background-color: var(--bg-color);
 }
 
@@ -280,7 +281,9 @@ footer {
     margin-right: 10px;
     border-radius: 50%;
 }
-
+.navbar-brand {
+    gap: 10px; /* Расстояние между картинкой и текстом */
+}
 /* Для мобильных устройств */
 @media (max-width: 768px) {
     .navbar-brand {
@@ -424,4 +427,74 @@ footer {
   100% {
     box-shadow: 0 0 0 0 rgba(230, 184, 37, 0.17); /* было rgba(0, 189, 31, 0.17) */
   }
+}
+
+.cta-button {
+    animation: gentlePulse 2.5s infinite;
+    transition: transform 0.2s, background-color 0.2s;
+    -webkit-tap-highlight-color: rgba(255, 204, 43, 0.3);
+    position: relative;
+    overflow: hidden;
+}
+
+.cta-button:active {
+    transform: scale(0.95);
+    background-color: #e6b825;
+}
+
+/* Более мягкая пульсация, не раздражает глаза */
+@keyframes gentlePulse {
+    0% {
+        box-shadow: 0 0 0 0 rgba(255, 204, 43, 0.4);
+    }
+    50% {
+        box-shadow: 0 0 0 10px rgba(255, 204, 43, 0);
+    }
+    100% {
+        box-shadow: 0 0 0 0 rgba(255, 204, 43, 0);
+    }
+}
+
+/* Для десктопов добавим hover */
+@media (hover: hover) {
+    .cta-button:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 5px 15px rgba(255, 204, 43, 0.3);
+    }
+}
+.button-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+    width: 100%;
+}
+
+.button-grid .btn {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    white-space: normal;
+    word-wrap: break-word;
+    padding: 0.75rem 1rem;
+}
+
+/* Десктоп - обе в одну строку */
+@media (min-width: 769px) {
+    .button-grid .btn {
+        height: 60px; /* Одинаковая высота для обеих */
+    }
+}
+
+/* Мобильные */
+@media (max-width: 768px) {
+    .button-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .button-grid .btn {
+        height: 90px; /* Обе кнопки одинаковой высоты */
+        /* Первая (1 строка) и вторая (2 строки) будут центрированы автоматически */
+    }
 }
