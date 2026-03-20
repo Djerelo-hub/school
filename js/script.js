@@ -79,16 +79,16 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 });
 
-// Отслеживание кликов по кнопке Binotel
-document.addEventListener('DOMContentLoaded', function() {
-    const binotelButton = document.getElementById('bingc-phone-button');
+// Отслеживание кликов по кнопке Binotel (по тексту)
+setTimeout(function() {
+    const binotelButton = document.querySelector('.bingc-phone-button');
     
-    if (binotelButton) {
+    if (binotelButton && !binotelButton.hasAttribute('data-fb-tracked')) {
+        binotelButton.setAttribute('data-fb-tracked', 'true');
         binotelButton.addEventListener('click', function() {
             if (typeof fbq === 'function') {
                 fbq('track', 'Lead');
-                console.log('Binotel click tracked as Lead');
             }
         });
     }
-});
+}, 1000);
