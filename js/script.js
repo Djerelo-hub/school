@@ -62,33 +62,33 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 });
-// Отслеживание кликов по кнопкам "Пройти безкоштовний курс"
-document.addEventListener('DOMContentLoaded', function() {
-    const courseButtons = document.querySelectorAll('a.btn-accent');
+// // Отслеживание кликов по кнопкам "Пройти безкоштовний курс"
+// document.addEventListener('DOMContentLoaded', function() {
+//     const courseButtons = document.querySelectorAll('a.btn-accent');
     
-    courseButtons.forEach(button => {
-        if (button.textContent.trim() === 'Пройти безкоштовний курс' || 
-            button.textContent.trim() === 'Пройти курс')  {
-            button.addEventListener('click', function() {
-                if (typeof fbq === 'function') {
-                    fbq('track', 'Lead');
-                    console.log('Course button tracked as Lead');
-                }
-            });
-        }
-    });
-});
+//     courseButtons.forEach(button => {
+//         if (button.textContent.trim() === 'Пройти безкоштовний курс' || 
+//             button.textContent.trim() === 'Пройти курс')  {
+//             button.addEventListener('click', function() {
+//                 if (typeof fbq === 'function') {
+//                     fbq('track', 'Lead');
+//                     console.log('Course button tracked as Lead');
+//                 }
+//             });
+//         }
+//     });
+// });
 
-// Отслеживание кликов по кнопке Binotel (по тексту)
-setTimeout(function() {
-    const binotelButton = document.querySelector('.bingc-phone-button');
+// // Отслеживание кликов по кнопке Binotel (по тексту)
+// setTimeout(function() {
+//     const binotelButton = document.querySelector('.bingc-phone-button');
     
-    if (binotelButton && !binotelButton.hasAttribute('data-fb-tracked')) {
-        binotelButton.setAttribute('data-fb-tracked', 'true');
-        binotelButton.addEventListener('click', function() {
-            if (typeof fbq === 'function') {
-                fbq('track', 'Lead');
-            }
-        });
-    }
-}, 1000);
+//     if (binotelButton && !binotelButton.hasAttribute('data-fb-tracked')) {
+//         binotelButton.setAttribute('data-fb-tracked', 'true');
+//         binotelButton.addEventListener('click', function() {
+//             if (typeof fbq === 'function') {
+//                 fbq('track', 'Lead');
+//             }
+//         });
+//     }
+// }, 1000);
