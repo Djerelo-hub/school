@@ -62,17 +62,32 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 });
-// Отслеживание кликов по кнопке Binotel для Meta Pixel
+// Отслеживание кликов по кнопкам "Пройти безкоштовний курс"
 document.addEventListener('DOMContentLoaded', function() {
-    // Находим кнопку Binotel по ID
+    const courseButtons = document.querySelectorAll('a.btn-accent');
+    
+    courseButtons.forEach(button => {
+        if (button.textContent.trim() === 'Пройти безкоштовний курс' || 
+            button.textContent.trim() === 'Пройти курс')  {
+            button.addEventListener('click', function() {
+                if (typeof fbq === 'function') {
+                    fbq('track', 'Lead');
+                    console.log('Course button tracked as Lead');
+                }
+            });
+        }
+    });
+});
+
+// Отслеживание кликов по кнопке Binotel
+document.addEventListener('DOMContentLoaded', function() {
     const binotelButton = document.getElementById('bingc-phone-button');
     
     if (binotelButton) {
         binotelButton.addEventListener('click', function() {
-            // Отправляем событие Lead в Meta Pixel
             if (typeof fbq === 'function') {
                 fbq('track', 'Lead');
-                console.log('Binotel click tracked as Lead in Meta Pixel');
+                console.log('Binotel click tracked as Lead');
             }
         });
     }
