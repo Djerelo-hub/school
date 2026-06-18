@@ -62,6 +62,42 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 });
+
+function recolorBinatelCircles() {
+    const color = '#AFC36A';
+    const opacity = 0.9;
+    const rgba = `rgba(175, 195, 106, ${opacity})`;
+    
+    const observer = new MutationObserver(function() {
+        const button = document.getElementById('bingc-phone-button');
+        if (button) {
+            observer.disconnect();
+            
+            // Перекрашиваем ТОЛЬКО круги
+            const outside = button.querySelector('.bingc-phone-button-circle-outside');
+            const inside = button.querySelector('.bingc-phone-button-circle-inside');
+            
+            if (outside) {
+                outside.style.fill = color;
+                outside.style.setProperty('fill', color, 'important');
+            }
+            
+            if (inside) {
+                inside.style.fill = rgba;
+                inside.style.setProperty('fill', rgba, 'important');
+            }
+            
+            console.log('✅ Круги Бинателя перекрашены в #AFC36A');
+        }
+    });
+    
+    observer.observe(document.body, {
+        childList: true,
+        subtree: true
+    });
+}
+
+recolorBinatelCircles();
 // // Отслеживание кликов по кнопкам "Пройти безкоштовний курс"
 // document.addEventListener('DOMContentLoaded', function() {
 //     const courseButtons = document.querySelectorAll('a.btn-accent');
