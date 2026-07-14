@@ -41,7 +41,7 @@ document.addEventListener('DOMContentLoaded', function() {
 // Обработчик для всех кнопок консультации Binotel
 document.addEventListener('DOMContentLoaded', function() {
     // Находим ВСЕ кнопки консультации по ссылке
-    const consultButtons = document.querySelectorAll('a[href="https://t.me/Bulanova_school_bot?start=consult"]');
+    const consultButtons = document.querySelectorAll('a[href="https://telegram.me/Bulanova_school_bot?start=consult"]');
     
     consultButtons.forEach(button => {
         button.addEventListener('click', function(e) {
@@ -57,7 +57,7 @@ document.addEventListener('DOMContentLoaded', function() {
             } else {
                 console.log('Кнопка Binotel не найдена');
                 // Если кнопка Binotel не найдена, перенаправляем в Telegram как запасной вариант
-                window.location.href = 'https://t.me/Bulanova_school_bot?start=consult';
+                window.location.href = 'https://telegram.me/Bulanova_school_bot?start=consult';
             }
         });
     });
