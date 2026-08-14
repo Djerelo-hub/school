@@ -186,6 +186,50 @@ recolorBinatelCircles();
    }).catch(function(){$('dzcb-g2').disabled=false;$('dzcb-g2').textContent=L.g2;});
  };
 })();
+
+// ========================================
+// Таймер обратного отсчета для Школы независимой семьи
+// ========================================
+(function() {
+    // Установите дату старта курса (измените при необходимости)
+    const courseStartDate = new Date("Sep 1, 2026 09:00:00").getTime();
+    
+    const daysEl = document.getElementById('course-days');
+    const hoursEl = document.getElementById('course-hours');
+    const minutesEl = document.getElementById('course-minutes');
+    const secondsEl = document.getElementById('course-seconds');
+    
+    // Если элементы не найдены — выходим
+    if (!daysEl || !hoursEl || !minutesEl || !secondsEl) return;
+    
+    function updateCountdown() {
+        const now = new Date().getTime();
+        const distance = courseStartDate - now;
+        
+        if (distance < 0) {
+            // Таймер завершен
+            daysEl.textContent = '0';
+            hoursEl.textContent = '00';
+            minutesEl.textContent = '00';
+            secondsEl.textContent = '00';
+            return;
+        }
+        
+        const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+        const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+        const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+        
+        daysEl.textContent = days;
+        hoursEl.textContent = String(hours).padStart(2, '0');
+        minutesEl.textContent = String(minutes).padStart(2, '0');
+        secondsEl.textContent = String(seconds).padStart(2, '0');
+    }
+    
+    // Обновляем каждую секунду
+    updateCountdown();
+    setInterval(updateCountdown, 1000);
+})();
 // // Отслеживание кликов по кнопкам "Пройти безкоштовний курс"
 // document.addEventListener('DOMContentLoaded', function() {
 //     const courseButtons = document.querySelectorAll('a.btn-accent');
